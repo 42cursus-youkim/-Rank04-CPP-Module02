@@ -2,14 +2,12 @@
 #include <string>
 
 // Constructors
-Fixed::Fixed() {
-  _rawBits = 0;
+Fixed::Fixed(): _rawBits(0) {
   announce("Default Constructor");
 }
 
-Fixed::Fixed(const Fixed& other) {
+Fixed::Fixed(const Fixed& other) : _rawBits(other.getRawBits()) {
   announce("Copy Constructor");
-  _rawBits = other.getRawBits();
 }
 
 // Destructor
