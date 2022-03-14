@@ -20,7 +20,7 @@ int main(void) {
   {
     std::cout << "<<<custom test>>>\n";
     std::cout << "[test + - * /]\n";
-    Fixed a(1), b(2), same(1);
+    Fixed a(0.1f), b(0.2f);
 
     std::cout << a << " + " << b << " = " << a + b << "\n";
     std::cout << a << " - " << b << " = " << a - b << "\n";
@@ -38,8 +38,10 @@ int main(void) {
               << "\n";
     std::cout << a << " != " << b << " = " << std::boolalpha << (a != b)
               << "\n";
-    std::cout << a << " == " << same << " = " << std::boolalpha << (a == same)
-              << "\n";
+    // check that a(0.1f) + b(0.2f) = result(0.3f)
+    Fixed same(0.1f), result(0.3f);
+    std::cout << a << " + " << b << " == " << result << std::boolalpha
+              << (a + b == result) << "\n";
   }
   return 0;
 }
