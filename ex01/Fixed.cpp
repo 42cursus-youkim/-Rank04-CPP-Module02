@@ -8,7 +8,6 @@ Fixed::Fixed() : _rawBits(0) {
 
 Fixed::Fixed(const int value) : _rawBits(value << _fractionalBits) {
   announce("Int Constructor", green);
-  ;
 }
 
 Fixed::Fixed(const float value)
