@@ -5,6 +5,8 @@
 #include <string>
 #include "Fixed.hpp"
 
+const int MAX_RANDOM_POINT_SIZE = 6;
+
 class Point {
  public:
   // Constructors

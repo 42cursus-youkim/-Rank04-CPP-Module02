@@ -32,8 +32,10 @@ const Fixed Point::getY() const {
   return _y;
 }
 
+// returns random point between 0~MAX_RANDOM_POINT_SIZE
 Point randomPoint() {
-  const int x = rand() % 5, y = rand() % 5;
+  const int x = rand() % MAX_RANDOM_POINT_SIZE,
+            y = rand() % MAX_RANDOM_POINT_SIZE;
   return Point(Fixed(x), Fixed(y));
 }
 

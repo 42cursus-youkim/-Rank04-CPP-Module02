@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 
-enum color { red, green, yellow };
-
 class Fixed {
  private:
   int _rawBits;
