@@ -1,15 +1,15 @@
 NAME := bsp
-CC := c++
-CFLAGS := -Wall -Wextra -Werror -std=c++98
+CXX := c++
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 
 SRC := $(wildcard *.cpp)
 OBJ := $(SRC:%.cpp=%.o)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 run: $(NAME)
 	./$(NAME)
