@@ -7,12 +7,12 @@ Fixed::Fixed() : _rawBits(0) {
 }
 
 Fixed::Fixed(const int value) : _rawBits(value << _fractionalBits) {
-  announce("Int Constructor", green);
+  announce("Int Constructor", GRN);
 }
 
 Fixed::Fixed(const float value)
-    : _rawBits(roundf(value * (1 << _fractionalBits))) {
-  announce("Float Constructor", green);
+    : _rawBits(static_cast<int>(roundf(value * (1 << _fractionalBits)))) {
+  announce("Float Constructor", GRN);
 }
 
 Fixed::Fixed(const Fixed& other) : _rawBits(other.getRawBits()) {
@@ -21,7 +21,7 @@ Fixed::Fixed(const Fixed& other) : _rawBits(other.getRawBits()) {
 
 // Destructor
 Fixed::~Fixed() {
-  announce("Destructor", red);
+  announce("Destructor", RED);
 }
 
 // Operators
@@ -50,10 +50,8 @@ void Fixed::setRawBits(int const raw) {
 }
 
 // Utils
-void Fixed::announce(const std::string& str, color col) const {
-  const std::string colors[] = {"\e[0;31m", "\e[0;32m", "\e[0;33m"};
-  const std::string end = "\e[0m";
-  std::cout << colors[col] << str << " called" << end << std::endl;
+void Fixed::announce(const std::string& str, const std::string& col) const {
+  std::cout << col << str << " called" << END "\n";
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {

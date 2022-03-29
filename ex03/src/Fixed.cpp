@@ -7,7 +7,7 @@ Fixed::Fixed() : _rawBits(0) {}
 Fixed::Fixed(const int value) : _rawBits(value << _fractionalBits) {}
 
 Fixed::Fixed(const float value)
-    : _rawBits(roundf(value * (1 << _fractionalBits))) {}
+    : _rawBits(static_cast<int>(roundf(value * (1 << _fractionalBits)))) {}
 
 Fixed::Fixed(const Fixed& other) : _rawBits(other.getRawBits()) {}
 
