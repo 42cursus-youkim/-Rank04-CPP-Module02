@@ -7,12 +7,16 @@
 #include <string>
 #include "color.hpp"
 
+using std::cerr;
 using std::cout;
 using std::string;
 
 // Macros
-#define TEST_EXPECT(expected, actual) \
-  test::expect(#expected " == " #actual, expected, actual)
+#define TEST_EXPECT(expr)                                                   \
+  do {                                                                      \
+    assert(expr);                                                           \
+    cout << HMAG "{ assert " BBLU << #expr << HMAG " } " BGRN " OK!\n" END; \
+  } while (0);
 
 #define TEST_LOG(x) test::log(#x, x)
 
@@ -34,17 +38,6 @@ void log(const string& str, T value) {
   cout << BLU << str << HYEL ": " BCYN << value << "\n";
 }
 
-template <typename T>
-void expect(const string& name, T const& expected, T const& actual) {
-  cout << BLU << name << HYEL ": ";
-  if (expected == actual) {
-    cout << BGRN << "OK\n" END;
-  } else {
-    cout << BRED << "KO\n";
-    cout << " expected: " << expected << " actual: " << actual << END "\n";
-    std::exit(EXIT_FAILURE);
-  }
-}
 }  // namespace test
 
 #endif  // __TEST_H__

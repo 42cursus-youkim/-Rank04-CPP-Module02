@@ -33,7 +33,8 @@
       "*.list": "properties",
       "*.sav": "json",
       "*.lalrpop": "rust",
-      "iostream": "cpp"
+      "iostream": "cpp",
+      "typeinfo": "cpp"
     }
   }
 }
