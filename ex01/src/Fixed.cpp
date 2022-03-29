@@ -26,7 +26,7 @@ Fixed::~Fixed() {
 
 // Operators
 Fixed& Fixed::operator=(const Fixed& other) {
-  announce("Assignation operator");
+  announce("Copy assignment operator");
   _rawBits = other.getRawBits();
   return *this;
 }
