@@ -3,8 +3,7 @@
 
 #include <iostream>
 #include <string>
-
-enum color { red, green, yellow };
+#include "color.hpp"
 
 class Fixed {
  private:
@@ -27,7 +26,7 @@ class Fixed {
   void setRawBits(const int raw);
 
   // Utils
-  void announce(const std::string& str, color col = yellow) const;
+  void announce(const std::string& str, const std::string& col = YEL) const;
 };
 
 #endif

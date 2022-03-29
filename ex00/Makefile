@@ -1,22 +1,24 @@
 NAME := fixed
 CXX := c++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++98
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98 \
+						-I include/											 \
+						-I util/
 
-SRC := $(wildcard *.cpp)
+SRC := $(wildcard src/*.cpp)
 OBJ := $(SRC:%.cpp=%.o)
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-run: $(NAME)
-	./$(NAME)
-
-.PHONY: run re test clean
+.PHONY: re clean run leak
 
 re: clean $(NAME)
 
 clean:
-	rm -f *.o $(NAME)
+	rm -f $(OBJ) $(NAME)
+
+run: $(NAME)
+	./$(NAME)
+
+leak:
+	colour-valgrind ./$(NAME)

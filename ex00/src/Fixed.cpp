@@ -2,7 +2,7 @@
 #include <string>
 
 // Constructors
-Fixed::Fixed(): _rawBits(0) {
+Fixed::Fixed() : _rawBits(0) {
   announce("Default Constructor");
 }
 
@@ -12,7 +12,7 @@ Fixed::Fixed(const Fixed& other) : _rawBits(other.getRawBits()) {
 
 // Destructor
 Fixed::~Fixed() {
-  announce("Destructor", red);
+  announce("Destructor", RED);
 }
 
 // Operators
@@ -24,18 +24,16 @@ Fixed& Fixed::operator=(const Fixed& other) {
 
 // Getters / Setters
 int Fixed::getRawBits() const {
-  announce("getRawBits Member Function", green);
+  announce("getRawBits Member Function", GRN);
   return _rawBits;
 }
 
 void Fixed::setRawBits(int const raw) {
-  announce("setRawBits Member Function", green);
+  announce("setRawBits Member Function", GRN);
   _rawBits = raw;
 }
 
 // Utils
-void Fixed::announce(const std::string& str, color col) const {
-  const std::string colors[] = {"\e[0;31m", "\e[0;32m", "\e[0;33m"};
-  const std::string end = "\e[0m";
-  std::cout << colors[col] << str << " called" << end << std::endl;
+void Fixed::announce(const std::string& str, const std::string& col) const {
+  std::cout << col << str << " called" << END "\n";
 }
