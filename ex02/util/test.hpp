@@ -35,7 +35,7 @@ void subject(T const& t) {
 
 template <typename T>
 void log(const string& str, T value) {
-  cout << BLU << str << HYEL ": " BCYN << value << " " END;
+  cout << BLU << str << HYEL ": " BCYN << value << "\n" END;
 }
 
 }  // namespace test

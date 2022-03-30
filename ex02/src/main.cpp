@@ -149,11 +149,42 @@ void testMinMax() {
   }
 }
 
+void testPrePostAddMinus() {
+  test::header("Pre and Post Add and Minus");
+  {
+    test::subject("Pre Add");
+    Fixed a(1);
+    TEST_LOG(a);
+    TEST_LOG(++a);
+    TEST_LOG(a);
+  }
+  {
+    test::subject("Post Add");
+    Fixed a(1);
+    TEST_LOG(a++);
+    TEST_LOG(a);
+  }
+  {
+    test::subject("Pre Minus");
+    Fixed a(1);
+    TEST_LOG(a);
+    TEST_LOG(--a);
+    TEST_LOG(a);
+  }
+  {
+    test::subject("Post Minus");
+    Fixed a(1);
+    TEST_LOG(a--);
+    TEST_LOG(a);
+  }
+}
+
 int main(void) {
   testEx00();
   testEx01();
   testMandatory();
   testOperator();
   testMinMax();
+  testPrePostAddMinus();
   return 0;
 }
