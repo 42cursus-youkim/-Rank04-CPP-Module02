@@ -86,7 +86,7 @@ void testOperator() {
     std::cout << a << " - " << b << " = " << a - b << "\n";
     std::cout << a << " * " << b << " = " << a * b << "\n";
     std::cout << a << " / " << b << " = " << a / b << "\n";
-    test::subject("> < >= <= == != >");
+    test::subject("> < >= <= == !=");
     std::cout << a << " > " << b << " = " << std::boolalpha << (a > b) << "\n";
     std::cout << a << " < " << b << " = " << std::boolalpha << (a < b) << "\n";
     std::cout << a << " >= " << b << " = " << std::boolalpha << (a >= b)
