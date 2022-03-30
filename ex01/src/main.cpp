@@ -81,8 +81,8 @@ void testConversion() {
 }
 
 int main(void) {
-  testMandatory();
   testEx00();
+  testMandatory();
   testConversion();
   return 0;
 }
