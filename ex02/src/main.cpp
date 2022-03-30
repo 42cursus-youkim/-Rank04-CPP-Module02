@@ -80,7 +80,7 @@ void testEx01() {
 void testOperator() {
   test::header("Operators");
   {
-    Fixed a(0.1f), b(0.2f);
+    Fixed a(5), b(2);
     test::subject("+ - * /");
     std::cout << a << " + " << b << " = " << a + b << "\n";
     std::cout << a << " - " << b << " = " << a - b << "\n";
@@ -153,27 +153,27 @@ void testPrePostAddMinus() {
   test::header("Pre and Post Add and Minus");
   {
     test::subject("Pre Add");
-    Fixed a(1);
+    Fixed a(0);
     TEST_LOG(a);
     TEST_LOG(++a);
     TEST_LOG(a);
   }
   {
     test::subject("Post Add");
-    Fixed a(1);
+    Fixed a(0);
     TEST_LOG(a++);
     TEST_LOG(a);
   }
   {
     test::subject("Pre Minus");
-    Fixed a(1);
+    Fixed a(0);
     TEST_LOG(a);
     TEST_LOG(--a);
     TEST_LOG(a);
   }
   {
     test::subject("Post Minus");
-    Fixed a(1);
+    Fixed a(0);
     TEST_LOG(a--);
     TEST_LOG(a);
   }

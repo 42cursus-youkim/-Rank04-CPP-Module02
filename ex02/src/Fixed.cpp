@@ -61,17 +61,11 @@ Fixed Fixed::operator-(const Fixed& other) const {
 }
 
 Fixed Fixed::operator*(const Fixed& other) const {
-  Fixed result;
-
-  result.setRawBits((_rawBits * other.getRawBits()) >> _fractionalBits);
-  return result;
+  return Fixed(toFloat() * other.toFloat());
 }
 
 Fixed Fixed::operator/(const Fixed& other) const {
-  Fixed result;
-
-  result.setRawBits((_rawBits << _fractionalBits) / other.getRawBits());
-  return result;
+  return Fixed(toFloat() / other.toFloat());
 }
 
 // ++, --
@@ -82,7 +76,7 @@ Fixed& Fixed::operator++() {
 
 Fixed Fixed::operator++(int) {
   Fixed temp(*this);
-  ++(*this);
+  operator++();
   return temp;
 }
 
@@ -93,7 +87,7 @@ Fixed& Fixed::operator--() {
 
 Fixed Fixed::operator--(int) {
   Fixed temp(*this);
-  --(*this);
+  operator--();
   return temp;
 }
 
