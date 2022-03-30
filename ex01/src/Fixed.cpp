@@ -37,7 +37,7 @@ int Fixed::toInt() const {
 }
 
 float Fixed::toFloat() const {
-  return (float)_rawBits / (1 << _fractionalBits);
+  return static_cast<float>(_rawBits) / (1 << _fractionalBits);
 }
 
 // Getters / Setters

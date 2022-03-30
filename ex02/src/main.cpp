@@ -77,70 +77,16 @@ void testEx01() {
   }
 }
 
-template <typename T>
-void checkFourOperator(T valA, T valB) {
-  test::subject("only int or float");
-  assert(false);
-}
-
-template <>
-void checkFourOperator<int>(int valA, int valB) {
-  Fixed a(valA), b(valB);
-  TEST_EXPECT(a + b == Fixed(valA + valB));
-  TEST_EXPECT(a - b == Fixed(valA - valB));
-  TEST_EXPECT(a * b == Fixed(valA * valB));
-  TEST_EXPECT(a / b == Fixed(valA / valB));
-}
-
-template <>
-void checkFourOperator<float>(float valA, float valB) {
-  Fixed a(valA), b(valB);
-  TEST_EXPECT(a + b == a.toFloat() + b.toFloat());
-  TEST_EXPECT(a - b == a.toFloat() - b.toFloat());
-  TEST_EXPECT(a * b == a.toFloat() * b.toFloat());
-  TEST_EXPECT(a / b == a.toFloat() / b.toFloat());
-}
-
 void testOperator() {
   test::header("Operators");
   {
-    test::subject("Operator + - * /");
-    checkFourOperator(10, 2);
-    checkFourOperator(1.0f, 2.0f);
-  }
-  {
-    test::subject("Operator ++ --");
-    {
-      Fixed a(1), b(1);
-      TEST_EXPECT(a++ == b);
-      TEST_EXPECT(a != b);
-    }
-  }
-}
-// Fixed a(valA), b(valB);
-// const float valA = 0.1f, valB = 0.2f;
-
-int main(void) {
-  testEx00();
-  testEx01();
-  testMandatory();
-  testOperator();
-  return 0;
-}
-
-// TODO: add below to test functions
-/*
-  {
-    std::cout << "<<<custom test>>>\n";
-    std::cout << "[test + - * /]\n";
     Fixed a(0.1f), b(0.2f);
-
+    test::subject("+ - * /");
     std::cout << a << " + " << b << " = " << a + b << "\n";
     std::cout << a << " - " << b << " = " << a - b << "\n";
     std::cout << a << " * " << b << " = " << a * b << "\n";
     std::cout << a << " / " << b << " = " << a / b << "\n";
-
-    std::cout << "[test > < >= <= == != >]\n";
+    test::subject("> < >= <= == != >");
     std::cout << a << " > " << b << " = " << std::boolalpha << (a > b) << "\n";
     std::cout << a << " < " << b << " = " << std::boolalpha << (a < b) << "\n";
     std::cout << a << " >= " << b << " = " << std::boolalpha << (a >= b)
@@ -151,9 +97,14 @@ int main(void) {
               << "\n";
     std::cout << a << " != " << b << " = " << std::boolalpha << (a != b)
               << "\n";
-    // check that a(0.1f) + b(0.2f) = result(0.3f)
-    Fixed same(0.1f), result(0.3f);
-    std::cout << a << " + " << b << " == " << result << std::boolalpha
-              << (a + b == result) << "\n";
+    TEST_EXPECT(Fixed(4) + Fixed(11) == Fixed(15));
   }
-*/
+}
+
+int main(void) {
+  testEx00();
+  testEx01();
+  testMandatory();
+  testOperator();
+  return 0;
+}

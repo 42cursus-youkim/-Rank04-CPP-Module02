@@ -80,9 +80,24 @@ void testConversion() {
   }
 }
 
+void testNegative() {
+  test::header("Negative Values");
+  {
+    test::subject("Negative int");
+    Fixed a(-42);
+    TEST_EXPECT(a.toInt() == -42);
+  }
+  {
+    test::subject("Negative float (precision is lost)");
+    Fixed a(-42.0f);
+    TEST_EXPECT(a.toInt() == -42);
+  }
+}
+
 int main(void) {
   testEx00();
   testMandatory();
   testConversion();
+  testNegative();
   return 0;
 }
