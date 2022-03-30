@@ -71,9 +71,9 @@ static bool checkBSP(void) {
 }
 
 int main(void) {
-  srand(592);
+  srand(58);
   for (int i = 0; i < 10; i++) {
-    test::subject(i);
+    test::subject(i + 1);
     checkBSP();
   }
   return 0;

@@ -4,7 +4,7 @@
 // Constructors
 Point::Point() : _x(0), _y(0) {}
 Point::Point(const Point& copy) : _x(copy._x), _y(copy._y) {}
-Point::Point(const Fixed& x, const Fixed& y) : _x(x), _y(y) {}
+Point::Point(const float x, const float y) : _x(x), _y(y) {}
 
 // Destructor
 Point::~Point() {}
@@ -34,9 +34,9 @@ const Fixed Point::getY() const {
 
 // returns random point between 0~MAX_RANDOM_POINT_SIZE
 Point randomPoint() {
-  const int x = rand() % MAX_RANDOM_POINT_SIZE,
-            y = rand() % MAX_RANDOM_POINT_SIZE;
-  return Point(Fixed(x), Fixed(y));
+  const float x = rand() % MAX_RANDOM_POINT_SIZE,
+              y = rand() % MAX_RANDOM_POINT_SIZE;
+  return Point(x, y);
 }
 
 std::ostream& operator<<(std::ostream& os, const Point& point) {

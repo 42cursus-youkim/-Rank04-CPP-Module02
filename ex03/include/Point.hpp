@@ -12,7 +12,7 @@ class Point {
   // Constructors
   Point();
   Point(const Point& copy);
-  Point(const Fixed& x, const Fixed& y);
+  Point(const float x, const float y);
 
   // Destructor
   ~Point();
