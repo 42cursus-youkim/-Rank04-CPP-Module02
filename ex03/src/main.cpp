@@ -2,14 +2,12 @@
 #include <iomanip>
 #include <iostream>
 #include "Point.hpp"
+#include "color.hpp"
+#include "test.hpp"
 
 using std::cout;
 
 bool bsp(Point const a, Point const b, Point const c, Point const point);
-
-const std::string green = "\e[0;32m";
-const std::string red = "\e[0;31m";
-const std::string end = "\e[0m";
 
 static bool isTriangle(Point a, Point b, Point c) {
   const float x1 = a.getX().toFloat(), x2 = b.getX().toFloat(),
@@ -36,9 +34,9 @@ static void represent(Point a, Point b, Point c, Point point) {
     for (int j = 0; j < MAX_RANDOM_POINT_SIZE; j++) {
       char c = board[i][j];
       if (c == 'P')
-        cout << green << c << end;
+        cout << GRN << c << END;
       else if (c != '.')
-        cout << red << c << end;
+        cout << RED << c << END;
       else
         cout << c;
     }
@@ -47,10 +45,10 @@ static void represent(Point a, Point b, Point c, Point point) {
 }
 
 static std::string boolToString(bool value) {
-  const std::string color = value ? green : red;
+  const std::string color = value ? GRN : RED;
   const std::string boolStr = value ? "true" : "false";
 
-  return color + boolStr + end;
+  return color + boolStr + END;
 }
 
 static bool checkBSP(void) {
@@ -63,16 +61,20 @@ static bool checkBSP(void) {
   } while (not isTriangle(a, b, c) or a == point or b == point or c == point);
 
   bool result = bsp(a, b, c, point);
-
   represent(a, b, c, point);
-  cout << "a" << a << " b" << b << " c" << c << " point" << point << "\n";
-  cout << "in triangle? " << boolToString(result) << "\n";
+  TEST_LOG(a);
+  TEST_LOG(b);
+  TEST_LOG(c);
+  TEST_LOG(point);
+  cout << "\nin triangle? " << boolToString(result) << "\n";
   return result;
 }
 
 int main(void) {
   srand(592);
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 10; i++) {
+    test::subject(i);
     checkBSP();
+  }
   return 0;
 }
