@@ -101,10 +101,59 @@ void testOperator() {
   }
 }
 
+void testMinMax() {
+  test::header("Min and Max");
+  {
+    test::subject("Int Min");
+    Fixed a(0.1f), b(0.2f);
+    TEST_LOG(a);
+    TEST_LOG(b);
+    TEST_EXPECT(Fixed::min(a, b) == a);
+  }
+  {
+    test::subject("Int Max");
+    Fixed a(0.1f), b(0.2f);
+    TEST_LOG(a);
+    TEST_LOG(b);
+    TEST_EXPECT(Fixed::max(a, b) == b);
+  }
+  {
+    test::subject("Int same");
+    Fixed a(0.1f), b(0.1f);
+    TEST_LOG(a);
+    TEST_LOG(b);
+    TEST_EXPECT(Fixed::min(a, b) == a);
+    TEST_EXPECT(Fixed::max(a, b) == b);
+  }
+  {
+    test::subject("Float Min");
+    Fixed a(0.1f), b(0.2f);
+    TEST_LOG(a);
+    TEST_LOG(b);
+    TEST_EXPECT(Fixed::min(a, b) == a);
+  }
+  {
+    test::subject("Float Max");
+    Fixed a(0.1f), b(0.2f);
+    TEST_LOG(a);
+    TEST_LOG(b);
+    TEST_EXPECT(Fixed::max(a, b) == b);
+  }
+  {
+    test::subject("Float same");
+    Fixed a(0.1f), b(0.1f);
+    TEST_LOG(a);
+    TEST_LOG(b);
+    TEST_EXPECT(Fixed::min(a, b) == a);
+    TEST_EXPECT(Fixed::max(a, b) == b);
+  }
+}
+
 int main(void) {
   testEx00();
   testEx01();
   testMandatory();
   testOperator();
+  testMinMax();
   return 0;
 }
